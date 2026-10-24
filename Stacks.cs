@@ -39,15 +39,52 @@ class Stacks
         return totalScore;
     }
 
-    public bool IsValid(string s)
+    public bool IsValid(string str)
     {
-        Stack<char> brackets = new(s.Length);
-
-        for (int i = 0; i < s.Length; i++)
+        str = "[]";
+        Dictionary<char, char> brackets = new()
         {
-            char test = s[i];
+            {'(',')'}, {'[',']'}, {'{','}'}
+        };
+        Stack<char> stack = new();
+        for (int i = 0; i < str.Length; i++)
+        {
+            if (brackets.ContainsKey(str[i])) stack.Push(str[i]);
+            else if (stack.Count > 0 && brackets[stack.Peek()] == str[i]) stack.Pop();
+            else return false;
         }
+        return stack.Count == 0;
+    }
 
-        return false;
+}
+
+public class MinStack
+{
+    private Stack<int> theStack;
+    int min;
+    public MinStack()
+    {
+        theStack = new();
+        min = int.MinValue;
+    }
+
+    public void Push(int val)
+    {
+        theStack.Push(val);
+    }
+
+    public void Pop()
+    {
+        theStack.Pop();
+    }
+
+    public int Top()
+    {
+        return theStack.Peek();
+    }
+
+    public int GetMin()
+    {
+       return min;
     }
 }
