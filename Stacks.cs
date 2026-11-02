@@ -65,17 +65,23 @@ public class MinStack
     public MinStack()
     {
         theStack = new();
-        min = int.MinValue;
+        min = int.MaxValue;
     }
 
     public void Push(int val)
     {
         theStack.Push(val);
+        min = val <= min ? val : min;
     }
 
     public void Pop()
     {
         theStack.Pop();
+        if (theStack.Count > 0)
+        {
+            min = theStack.Min();
+        }
+        else min = int.MaxValue;
     }
 
     public int Top()
@@ -85,6 +91,6 @@ public class MinStack
 
     public int GetMin()
     {
-       return min;
+        return min;
     }
 }
