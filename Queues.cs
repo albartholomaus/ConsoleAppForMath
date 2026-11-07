@@ -1,4 +1,4 @@
-public class Solution
+public class QueueClass
 {
     public int CountStudents(int[] students, int[] sandwiches)
     {
