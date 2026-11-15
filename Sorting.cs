@@ -79,9 +79,21 @@ public static class Sorting
 
     public static void Merge(int[] nums1, int m, int[] nums2, int n)
     {
-
+        Array.Copy(nums2, 0, nums1, m, n);
+        Array.Sort(nums1);
     }
 
+    public int Search(int[] nums, int target)
+    {
+        int left = 0, right = nums.Length - 1;
+        int mid; 
+
+        while (left <=right)
+        {
+            
+        }
+
+    }
 
 
 }
