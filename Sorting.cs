@@ -1,4 +1,4 @@
-public static class Sorting
+public class Sorting
 {
     public static int[] MergeSort(int[] arr)
     {
@@ -86,14 +86,27 @@ public static class Sorting
     public int Search(int[] nums, int target)
     {
         int left = 0, right = nums.Length - 1;
-        int mid; 
+        int mid = 0;
 
-        while (left <=right)
+        while (left <= right)
         {
-            
-        }
+            mid = (left + right) / 2;
+            if (target > nums[mid])
+            {
+                left = mid + 1;
+            }
+            else if (target < nums[mid])
+            {
+                right = mid - 1;
+            }
+            else return mid;
 
+        }
+        return -1;
     }
+
+
+
 
 
 }
