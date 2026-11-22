@@ -100,13 +100,24 @@ public class Sorting
                 right = mid - 1;
             }
             else return mid;
-
         }
         return -1;
     }
 
+    public int MinEatingSpeed(int[] piles, int availableTime)
+    {
+        int low = 1;
+        int high = piles.Max();
 
+        while (low < high)
+        {
+            int hours = 0;
+            int eatingtime = low + (high - low) / 2; ; 
+            foreach (var pile in piles) hours += (pile + eatingtime - 1) / eatingtime; // OR (int)Math.Ceiling((double)pile / speed);
 
-
-
+            if (hours > availableTime) low = eatingtime + 1;
+            else high = eatingtime;
+        }
+        return low;
+    }
 }
